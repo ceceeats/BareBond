@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Questions</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			font-family: monospace;
+			font-size: 20px;
+		}
+		button {
+			padding: 10px 20px;
+			border-radius: 5px;
+			background-color: #007bff;
+			color: #fff;
+			font-size: 20px;
+			border: none;
+			cursor: pointer;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="question-container">
+		<p id="question-text">Click the button to get a random question</p>
+		<button id="question-button">Get Question</button>
+	</div>
+	<script>
+		const questions = [
+			"What qualities do you find important in a person?",
+			"What’s the best piece of advice someone has given you?",
+			"How do you feel about God and spirituality?",
+			"What do people really need to chill out about?"
+		];
+
+		const questionText = document.getElementById("question-text");
+		const questionButton = document.getElementById("question-button");
+
+		questionButton.addEventListener("click", () => {
+			const randomIndex = Math.floor(Math.random() * questions.length);
+			const randomQuestion = questions[randomIndex];
+			questionText.innerText = randomQuestion;
+		});
+	</script>
+</body>
+</html>
