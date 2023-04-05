@@ -16,9 +16,6 @@
 		button {
 			padding: 10px 20px;
 			border-radius: 5px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
 			background-color: #3b3b3b;
 			color: #fff;
 			font-family: monospace;
@@ -27,12 +24,16 @@
 			cursor: pointer;
 			outline: none;
 		}
+		div {
+			text-align: center;
+		}
 	</style> 
 </head>
 <body>
 	<div id="question-container">
 		<p id="question-text">Click the button to get a random question</p>
 		<button id="question-button">Next</button>
+		
 	</div>
 	<script>
 		const questions = [
