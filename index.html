@@ -50,113 +50,22 @@
 					
 				"What do you think aliens would actually look/be like?",
 			    "What crazy things will you do if you ever become rich?",
-			    "If you could switch genders for a length of time of your choosing, would you? And if so, how long?",
-			    "If you could dedicate your life to solving one problem, what problem would you choose?",
-			    "What is your idea of a perfect vacation?",
-			    "What would be the absolute perfect day?",
-			    "What’s something weird that you recommend everyone tries at least once?",
-			    "Have you tried any unusual dishes?",
-			    "Do you like being a part of a large family, being an only child, having an older sister, etc.?",
-			    "Where would you like to live if you had five houses to choose from around the world?",
-			    "What would you change in your life if you knew you were going to die in a year?",
-			    "If you only had 48 hours to live, what are the things you would do?",
-			    "Who is that one person you can talk to about just anything?",
-			    "Who are the five people you are closest with?",
-			    "Which parent are you closer to and why?",
-			    "How many times have you ever been in love?",
-			    "What did your past relationship teach you?",
-			    "What is the first lesson you want to tell your children about love and relationships?",
-			    "What is a relationship a red flag or deal breaker for you?",
-			    "Is flirting cheating?",
-			    "Have you ever been in a toxic relationship?",
-			    "When was the last time you broke someone’s heart?",
-			    "Would you ever take back someone who cheated?",
-			    "What would you do if your parents didn’t like your partner?",
-			    "What do you wish to find in the next relationship?",
-			    "What’s the most ridiculous thing you’ve ever done in the name of love?",
-			    "Have you ever lost someone close to you?",
-			    "When do you think a person is ready for marriage?",
-			    "What qualities do you admire about your parents?",
-			    "What kind of parent do you think you will be?",
-			    "Do I have the same appearance in real life as you thought I would?",
-			    "What’s your wish for me?",
-			    "In a new relationship, what is one thing you are dying to try?",
-			    "How many kids do you want in the future? Would you be willing to adopt?",
-			    "What is the aspect of dating that you hate the most?",
-			    "When you talk to others about me, how do you describe me?",
-			    "What event from the past do you most want to see a recording of?",
-			    "What is the meaning of your tattoos?",
-			    "What’s something you wish you had never learned how it was made or how it works?",
-			    "What was the best thing about how your parents/environment raised you?",
-			    "Can you share some funny stories from your childhood?",
-			    "What was the funniest injury you’ve ever suffered?",
-			    "What names were ruined for you because you knew someone terrible with that name?",
-			    "What do you really wish you knew when you were younger?",
-			    "When have you felt your biggest adrenaline rush?",
-			    "Looking back on your life, what have you done that has given you the most satisfaction?",
-			    "What do you wish you could re-live in your lifetime?",
-			    "What is the greatest struggle you’ve overcome?",
-			    "What is your greatest fear?",
-			    "What’s your biggest regret in life?",
-			    "What was the worst phase in your life?",
-			    "What was the best phase in your life?",
-			    "What is the craziest thing you’ve ever done, and would you do it again?",
-			    "What accomplishment are you most proud of?",
-			    "What’s your “and then it got worse” story?",
-			    "What do you think you were like as a kid?",
-			    "What would impress you?",
-			    "What’s your story?",
-			    "What are your top 5 favorite topics to talk about?",
-			    "What are you most grateful or thankful for?",
-			    "How would your friends describe you?",
-			    "Who do you make happy?",
-			    "What’s your favorite hobby to do alone?",
-			    "What are three things you value most about a person?",
-			    "What’s the one thing that people always misunderstand about you?",
-			    "Do you have any tattoos? If so, what’s the meaning behind it?",
-			    "Is what you’re doing now what you always wanted to do growing up?",
-			    "What silly thing do you take a lot of pride in?",
-			    "What do most people overestimate or underestimate about you?",
-			    "What is something that the majority of people haven’t done but that you have?",
-			    "When was the last time you had a gut feeling about something that turned out to be correct? How about a time your gut feeling was wrong?",
-			    "What habit do you have that you think not many other people have?",
-			    "What body features do you pay the most attention to?",
-			    "How decisive or indecisive are you?",
-			    "What do you think people automatically assume about you when they look at you?",
-			    "What snack can you just not get enough of?",
-			    "What makes you laugh the most?",
-			    "What really makes you angry?",
-			    "Have you ever gotten into a fight at school?",
-			    "Who are you when you are with me, and what are you like with other people?",
-			    "What is one dream you have yet to accomplish?",
-			    "What is something you’ve always wanted to do but you were afraid to?",
-			    "What’s the one thing you would like to change about yourself?",
-			    "What’s something you’d like to learn or be better at?",
-			    "What do you most look forward to about getting old?",
-			    "How big would you dream, if you knew you wouldn’t fail?",
-			    "What are your values and philosophy in life?",
-			    "What qualities do you find important in a person?",
-			    "What’s the best piece of advice someone has given you?",
-			    "How do you feel about God and Spirituality?",
-			    "What do people really need to chill out about?",
-			    "Who do you admire and respect in life?",
-			    "What advice would you give to someone, if you could tell them just one thing?",
-			    "Is the glass half-full or half-empty in your eyes?",
-			    "How would you react if someone made you your favorite food?",
-			    "What’s on your bucket list this year?",
-			    "How comfortable are you around me? Are you fully yourself around me?",
-			    "If a genie granted you 3 wishes right now, what would you wish for?",
-			    "If you were given immortality, but there was one condition, what would stop you from accepting immortality?",
-			    "What great idea would you like to try if you had enough money?"
+			    "If you could switch genders for a length of time of your choosing, would you? And if so, how long?"
 		];
 
 		const questionText = document.getElementById("question-text");
 		const questionButton = document.getElementById("question-button");
 
+		let isFirstClick = true;
 		questionButton.addEventListener("click", () => {
-			const randomIndex = Math.floor(Math.random() * questions.length);
-			const randomQuestion = questions[randomIndex];
-			questionText.innerText = randomQuestion;
+			if (isFirstClick) {
+				isFirstClick = false;
+				questionButton.innerText = "shuffle questions";
+			} else {
+				const randomIndex = Math.floor(Math.random() * questions.length);
+				const randomQuestion = questions[randomIndex];
+				questionText.innerText = randomQuestion;
+			}
 		});
 	</script>
 </body>
