@@ -46,27 +46,27 @@
 		
 	</div>
 	<script>
-		const questions = [
-					
-				"What do you think aliens would actually look/be like?",
-			    "What crazy things will you do if you ever become rich?",
-			    "If you could switch genders for a length of time of your choosing, would you? And if so, how long?"
-		];
+		const xhr = new XMLHttpRequest();
+		xhr.open('GET', 'questions.txt');
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+				const questions = xhr.responseText.split('\n').filter(question => question.trim() !== '');
+				const questionText = document.getElementById("question-text");
+				const questionButton = document.getElementById("question-button");
+				let isFirstClick = true;
 
-		const questionText = document.getElementById("question-text");
-		const questionButton = document.getElementById("question-button");
-
-		let isFirstClick = true;
-		questionButton.addEventListener("click", () => {
-			if (isFirstClick) {
-				isFirstClick = false;
-				questionButton.innerText = "shuffle questions";
-			} else {
-				const randomIndex = Math.floor(Math.random() * questions.length);
-				const randomQuestion = questions[randomIndex];
-				questionText.innerText = randomQuestion;
+				questionButton.addEventListener("click", () => {
+					if (isFirstClick) {
+						questionButton.innerText = "shuffle questions";
+						isFirstClick = false;
+					}
+					const randomIndex = Math.floor(Math.random() * questions.length);
+					const randomQuestion = questions[randomIndex];
+					questionText.innerText = randomQuestion;
+				});
 			}
-		});
+		};
+		xhr.send();
 	</script>
 </body>
 </html>
